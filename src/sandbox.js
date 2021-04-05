@@ -81,16 +81,4 @@
 //         skills:["java","python"]
 //     }
 //lesson 6 - dynamic types
-var age = 25;
-console.log(age);
-age = "mak";
-console.log(age);
-age = true;
-console.log(age);
-age = {
-    name: "mak",
-    roll_no: 12
-};
-console.log(age);
-age.roll_no = "322";
-console.log(age);
+// 

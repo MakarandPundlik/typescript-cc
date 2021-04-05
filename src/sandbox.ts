@@ -107,16 +107,46 @@
     
 
 //lesson 6 - dynamic types
-let age: any = 25;
-console.log(age);
-age = "mak";
-console.log(age);
-age = true;
-console.log(age);
-age = {
-    name:"mak",
-    roll_no:12
+//use of any
+
+//lesson 8
+// let greet : Function;
+// //greet = "Hello World"; //error 
+// greet = () =>{  //ok
+//     console.log("Hello world");
+// }
+// greet();//ok
+
+// const add = (a:number,b:number,c:number|string = 10) : void =>{ // 'c' c?:"types" is and optional parameter
+//                                                      //when it is not passed its default value is undefined
+//                                                      //to have default value of 'c' c:types = value
+//                                                      //when value is passed explicitly then default value gets overriden
+//     console.log(a+b);       
+//     console.log(c);
+// }
+// add(5,10,25);
+
+// const minus = (a:number,b:number) : number =>{ 
+//     //return type after the arguemetns list
+//     //when function does not return anything it is by default void
+//     return a+b;
+// }
+
+// let result = minus(10,45); 
+// //result = "myresult";//error , compiler infers the return type of the function as the type of variable
+//                     //hence conflict of types
+
+
+//lesson 9 - type alias
+
+//user defined types
+type stringOrNUmber = string|number;
+type objWithName = {name:string,uid:stringOrNUmber}
+
+const logDetails = (item:string,uid:stringOrNUmber) =>{
+
 }
-console.log(age);
-age.roll_no = "322";
-console.log(age);
+
+const greet = (user:objWithName)=>{
+    console.log(`${user.name} is saying hello`);
+}
