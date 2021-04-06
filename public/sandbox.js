@@ -3,8 +3,137 @@
 // let ch = 'mychar';
 // //ch = 20; //error
 // ch = "myString"; //ok
-var logDetails = function (item, uid) {
+// let num = 10;
+// //num = "mynum"; //error
+// num = 20; //ok
+// let flag = false;
+// //flag = "true"; //error
+// flag = true;
+// const circ = (diameter: number) => { //at this instant compiler doesnt know the type of diameter
+//                                      //hence doesnt throw any error 
+//     return diameter * Math.PI;
+// }
+// console.log(circ(25));
+//lesson 4 - objects and arrays
+// let names = ["makarand","samu","varad"];
+// names.push("aditya"); //ok same data types
+// //names.push(4); //error 
+// let numbers = [10,20,30,40];
+// numbers.push(50); //ok
+// //numbers.push("mak"); //error
+// let mixed = [1,2,"mak","samu",4,"varad",true,"aditya"];
+// mixed.push(3);//ok
+// mixed.push(true);//ok
+// //but we cannot add datatype which is not defined in array
+// let student = {
+//     name:"Mak",
+//     roll_no:1,
+//     age:34
+// }
+// student.age = 30;//ok
+// //student.name = 32; //error
+// //new fields cannot be added ti the predefined object
+// //student.marks = 90; //error,property marks does not exists
+// //object overriding is allowed and it should be the exact replica of the previous object
+// //order doesn't matter
+// student = {
+//     name:"samu",
+//     age:32,
+//     roll_no:1
+// }
+//lesson 5 - explicit types
+//     let mystring : string ; //defined type but haven't initialized
+//     //mystring = 20; //error
+//     mystring = "mak"; //ok
+//     let mynum : number;
+//    // mynum = "324342";//error
+//     mynum = 233;//ok
+//     //arrays
+//     let names : string[] = [];
+//     //names = [12,43]; //error
+//     names.push("adu");//ok
+//     names = ["mak","samu"];//ok
+//     //union types
+//     let mixed : (string|number|boolean)[] = [];
+//     mixed.push("mak");//ok
+//     mixed.push(23);//ok
+//     mixed.push(false);//ok
+//     console.log(mixed);
+//     //union types on variables
+//     let uid : string|number;
+//     uid="unique id";//ok
+//     uid = 232323;//ok
+//     //object
+//     let studentOne : object;
+//     studentOne={
+//         name:'Mak',
+//         roll_no:12,
+//         marks:90
+//     }
+//     let studentTwo : {
+//         name:string,
+//         age:number,
+//         skills:string[]
+//     }
+//     //ok
+//     studentTwo={
+//         name:"Mak",
+//         age:30,
+//         skills:["java","python"]
+//     }
+//lesson 6 - dynamic types
+//use of any
+//lesson 8
+// let greet : Function;
+// //greet = "Hello World"; //error 
+// greet = () =>{  //ok
+//     console.log("Hello world");
+// }
+// greet();//ok
+// const add = (a:number,b:number,c:number|string = 10) : void =>{ // 'c' c?:"types" is and optional parameter
+//                                                      //when it is not passed its default value is undefined
+//                                                      //to have default value of 'c' c:types = value
+//                                                      //when value is passed explicitly then default value gets overriden
+//     console.log(a+b);       
+//     console.log(c);
+// }
+// add(5,10,25);
+// const minus = (a:number,b:number) : number =>{ 
+//     //return type after the arguemetns list
+//     //when function does not return anything it is by default void
+//     return a+b;
+// }
+// let result = minus(10,45); 
+// //result = "myresult";//error , compiler infers the return type of the function as the type of variable
+//                     //hence conflict of types
+//lesson 9 - type alias
+//user defined types
+// type stringOrNUmber = string|number;
+// type objWithName = {name:string,uid:stringOrNUmber}
+// const logDetails = (item:string,uid:stringOrNUmber) =>{
+// }
+// const greet = (user:objWithName)=>{
+//     console.log(`${user.name} is saying hello`);
+// }
+//lesson 10 - function signatures
+//eg-1
+var greet; //function signature
+greet = function (name, wish) {
+    console.log(name + " wishes " + wish);
 };
-var greet = function (user) {
-    console.log(user.name + " is saying hello");
+//eg-2
+var calc; //signature
+calc = function (a, b, action) {
+    if (action == "add")
+        return a + b;
+    else if (action == "sub")
+        return a - b;
+    else if (action == "mul")
+        return a * b;
+    return a / b;
+};
+//eg-3
+var logDetails;
+logDetails = function (person) {
+    console.log("My name is " + person.name + "  and i am " + person.age + " years old");
 };

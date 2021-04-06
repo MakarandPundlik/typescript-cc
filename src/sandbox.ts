@@ -140,13 +140,40 @@
 //lesson 9 - type alias
 
 //user defined types
-type stringOrNUmber = string|number;
-type objWithName = {name:string,uid:stringOrNUmber}
+// type stringOrNUmber = string|number;
+// type objWithName = {name:string,uid:stringOrNUmber}
 
-const logDetails = (item:string,uid:stringOrNUmber) =>{
+// const logDetails = (item:string,uid:stringOrNUmber) =>{
 
+// }
+
+// const greet = (user:objWithName)=>{
+//     console.log(`${user.name} is saying hello`);
+// }
+
+
+//lesson 10 - function signatures
+//eg-1
+let greet : (a:string,b:string)=>void; //function signature
+greet = (name:string,wish:string)=>{
+    console.log(`${name} wishes ${wish}`);
 }
 
-const greet = (user:objWithName)=>{
-    console.log(`${user.name} is saying hello`);
+//eg-2
+let calc : (a:number,b:number,c:string) => number ;//signature
+calc = (a:number,b:number,action:string):number=>{
+    if(action=="add")
+        return a+b;
+    else if(action=="sub") 
+        return a-b;
+    else if(action=="mul")
+        return a*b;
+    return a/b;   
+}
+
+//eg-3
+let logDetails : (obj:{name:string,age:number})=>void;
+type obj = {name:string,age:number};
+logDetails = (person:obj):void=>{
+    console.log(`My name is ${person.name}  and i am ${person.age} years old`);
 }
