@@ -1,23 +1,29 @@
-"use strict";
 // const anchor = document.querySelector('a')!;
 // console.log(anchor);
-//invoice class
-var Invoice = /** @class */ (function () {
-    // readonly client:string; //other methods and classes can only read the contents of this attribute
-    // private details:string;
-    // public amount:number; //default is public
-    function Invoice(client, //shortcut method to declare and assign values in constructor
-    details, //applicable only if access specifier is used
-    amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    Invoice.prototype.format = function () {
-        return this.client + " owes $" + this.amount + " for " + this.details;
-    };
-    return Invoice;
-}());
+//interfaces
+// interface IsPerson {
+//     name:string,
+//     age:number,
+//     speak(a:string):void,
+//     spend(a:number):number
+// }
+// const me : IsPerson = {
+//     name:"mak",
+//     age:20,
+//     speak(text:string):void{
+//         console.log(text);
+//     },
+//     spend(amount:number):number{
+//         console.log(`${this.name} has spend ${amount}`)
+//         return amount;
+//     }
+// }
+// console.log(me);
+// const greetPerson = (person:IsPerson)=>{
+//     console.log(`Hello ${person.name}`);
+// }
+// greetPerson(me);
+import Invoice from './classes/invoice.js'; //important,browser handles .js files and not .ts
 //object of invoice
 var invoiceOne = new Invoice('mak', 'payment', 200);
 var invoiceTwo = new Invoice('samu', 'dance class', 500);
