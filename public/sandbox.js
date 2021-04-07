@@ -3,6 +3,17 @@
 // let ch = 'mychar';
 // //ch = 20; //error
 // ch = "myString"; //ok
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // let num = 10;
 // //num = "mynum"; //error
 // num = 20; //ok
@@ -117,23 +128,38 @@
 // }
 //lesson 10 - function signatures
 //eg-1
-var greet; //function signature
-greet = function (name, wish) {
-    console.log(name + " wishes " + wish);
+// let greet : (a:string,b:string)=>void; //function signature
+// greet = (name:string,wish:string)=>{
+//     console.log(`${name} wishes ${wish}`);
+// }
+// //eg-2
+// let calc : (a:number,b:number,c:string) => number ;//signature
+// calc = (a:number,b:number,action:string):number=>{
+//     if(action=="add")
+//         return a+b;
+//     else if(action=="sub") 
+//         return a-b;
+//     else if(action=="mul")
+//         return a*b;
+//     return a/b;   
+// }
+// //eg-3
+// let logDetails : (obj:{name:string,age:number})=>void;
+// type obj = {name:string,age:number};
+// logDetails = (person:obj):void=>{
+//     console.log(`My name is ${person.name}  and i am ${person.age} years old`);
+// }
+//lesson-18 Generics
+//Generics with objects
+var addUid = function (obj) {
+    var uid = Math.floor(Math.random() * 100);
+    return __assign(__assign({}, obj), { uid: uid });
 };
-//eg-2
-var calc; //signature
-calc = function (a, b, action) {
-    if (action == "add")
-        return a + b;
-    else if (action == "sub")
-        return a - b;
-    else if (action == "mul")
-        return a * b;
-    return a / b;
-};
-//eg-3
-var logDetails;
-logDetails = function (person) {
-    console.log("My name is " + person.name + "  and i am " + person.age + " years old");
-};
+var objOne = addUid({
+    name: "mak",
+    age: 20,
+    marks: 90
+});
+//console.log(objOne,name);//error, we have not specified the type of object
+console.log(objOne.name); //ok, now we can access 
+//Generics with interfaces

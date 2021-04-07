@@ -154,26 +154,43 @@
 
 //lesson 10 - function signatures
 //eg-1
-let greet : (a:string,b:string)=>void; //function signature
-greet = (name:string,wish:string)=>{
-    console.log(`${name} wishes ${wish}`);
-}
+// let greet : (a:string,b:string)=>void; //function signature
+// greet = (name:string,wish:string)=>{
+//     console.log(`${name} wishes ${wish}`);
+// }
 
-//eg-2
-let calc : (a:number,b:number,c:string) => number ;//signature
-calc = (a:number,b:number,action:string):number=>{
-    if(action=="add")
-        return a+b;
-    else if(action=="sub") 
-        return a-b;
-    else if(action=="mul")
-        return a*b;
-    return a/b;   
-}
+// //eg-2
+// let calc : (a:number,b:number,c:string) => number ;//signature
+// calc = (a:number,b:number,action:string):number=>{
+//     if(action=="add")
+//         return a+b;
+//     else if(action=="sub") 
+//         return a-b;
+//     else if(action=="mul")
+//         return a*b;
+//     return a/b;   
+// }
 
-//eg-3
-let logDetails : (obj:{name:string,age:number})=>void;
-type obj = {name:string,age:number};
-logDetails = (person:obj):void=>{
-    console.log(`My name is ${person.name}  and i am ${person.age} years old`);
+// //eg-3
+// let logDetails : (obj:{name:string,age:number})=>void;
+// type obj = {name:string,age:number};
+// logDetails = (person:obj):void=>{
+//     console.log(`My name is ${person.name}  and i am ${person.age} years old`);
+// }
+
+
+//lesson-18 Generics
+//Generics with objects
+const addUid = <T extends {name:string}>(obj:T) => {
+    const uid = Math.floor(Math.random()*100);
+    return {...obj,uid};
 }
+let objOne = addUid({
+    name:"mak",
+    age:20,
+    marks:90
+});
+//console.log(objOne,name);//error, we have not specified the type of object
+console.log(objOne.name);//ok, now we can access 
+
+//Generics with interfaces
